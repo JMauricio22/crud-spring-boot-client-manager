@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout::head('Register')">
+    <title>Register</title>
+</head>
+<body>
+
+<main class="vh-100 d-flex justify-content-center align-items-center bg-light" style="border: 1px solid transparent">
+    <div class="card py-3 mt-4 mx-auto w-100 rounded-3 bg-ligth shadow" style="max-width: 400px;">
+        <div class="card-body">
+            <div class="mb-4">
+                <a class="mb-4" th:href="@{/}">
+                    <i class="fa-solid fa-chevron-left"></i> Go back
+                </a>
+            </div>
+            <form method="post" th:action="@{/register}">
+                <div class="mb-2">
+                    <label class="form-label" for="username">Username</label>
+                    <input class="form-control" type="text" name="username" id="username" required/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password">Password</label>
+                    <input class="form-control" type="password" name="password" id="password" required/>
+                </div>
+                <div class="mb-3">
+                    <p class="mb-2 lead">Is Admin:</p>
+                    <label class="form-label">
+                        Admin <input name="role" type="checkbox" th:value="admin"/>
+                    </label>
+                </div>
+                <button class="btn btn-primary w-100 mb-3" type="submit" th:text="Register"></button>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

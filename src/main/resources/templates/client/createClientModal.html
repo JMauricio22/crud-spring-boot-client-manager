@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Client Modal</title>
+</head>
+<body>
+<div th:fragment="createClient" class="modal fade" id="createClient" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Register new client</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:action="@{/client/new}" method="post">
+                <div class="modal-body">
+                    <div class="mb-2">
+                        <label class="form-label" for="name">Name</label>
+                        <input class="form-control" type="text" name="name" id="name" required/>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" for="lastName">Last Name</label>
+                        <input class="form-control" type="text" name="lastName" id="lastName" required/>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-control" type="email" name="email" id="email" required/>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" for="phone">Phone</label>
+                        <input class="form-control" type="text" name="phone" id="phone" required/>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" for="credit">Credit</label>
+                        <input class="form-control" step="any" type="number" name="credit" id="credit" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

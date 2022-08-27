@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout::head('Home')">
+    <title>403</title>
+</head>
+<body>
+<nav th:replace="layout/layout::nav"></nav>
+<main class="min-vh-100 container pt-4">
+    <div class="mt-4">
+        <a class="mb-4" th:href="@{/}">
+            <i class="fa-solid fa-chevron-left"></i> Go back to home
+        </a>
+        <h1 class="h2 text-info">Access Denied 😰</h1>
+    </div>
+</main>
+<footer th:replace="layout/layout::footer"></footer>
+</body>
+</html>

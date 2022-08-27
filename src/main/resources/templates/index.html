@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout::head('Home')">
+    <title>Login</title>
+</head>
+<body>
+<nav th:replace="layout/layout::nav"></nav>
+<main class="min-vh-100 container pt-4">
+    <h1>Client Manager App</h1>
+    <section th:replace="client/clients::clients"></section>
+    <div th:replace="client/createClientModal::#createClient"></div>
+</main>
+<footer th:replace="layout/layout::footer"></footer>
+</body>
+</html>

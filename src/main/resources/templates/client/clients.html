@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+</head>
+<body>
+<section th:fragment="clients" class="w-auto bg-light shadow rounded-3 mt-3 py-md-4 px-md-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <button sec:authorize="hasRole('ADMIN')" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createClient"><i
+                        class="fa-solid fa-plus"></i> New Client
+                </button>
+            </div>
+            <div class="col-md-8">
+                <table th:if="${customers.size() > 0}" class="table table-borderless table-responsive">
+                    <thead>
+                    <tr class="bg-black text-white">
+                        <th class="d-none d-md-table-cell">ID</th>
+                        <th>Name</th>
+                        <th>Credit</th>
+                        <th sec:authorize="hasRole('ADMIN')" >Edit</th>
+                        <th sec:authorize="hasRole('ADMIN')">Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="client,status : ${customers}">
+                        <td class="d-none d-md-table-cell" th:text="${status.count}"></td>
+                        <td th:text="|${client.name} ${client.lastName}|"></td>
+                        <td th:text="${client.credit}"></td>
+                        <td sec:authorize="hasRole('ADMIN')">
+                            <a class="link-primary" th:href="@{/client/}  + ${client.id + '/edit'}" th:alt-title="Edit">
+                                <i class="fa-solid fa-pencil"></i> Edit
+                            </a>
+                        </td>
+                        <td sec:authorize="hasRole('ADMIN')">
+                            <a class="link-danger" th:href="@{/client/remove(clientId=${client.id})}" th:alt-title="Remove">
+                                <i class="fa-solid fa-trash"></i> Remove
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-danger py-3 px-3 text-white mb-3">
+                    <h3 class="display-6">Total Balance</h3>
+                    <div class="lead fs-3">
+                        <i class="fa-solid fa-coins"></i> [[${total}]]
+                    </div>
+                </div>
+                <div class="bg-success py-3 px-3 text-white">
+                    <h3 class="display-6">Total Clients</h3>
+                    <div class="lead fs-3">
+                        <i class="fa-solid fa-user-group"></i> [[${totalCustomers}]]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

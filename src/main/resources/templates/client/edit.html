@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{${#execInfo.templateName}/../layout/layout::head('Edit Client')}">
+    <title>Login</title>
+</head>
+<body>
+<nav th:replace="~{${#execInfo.templateName}/../layout/layout::nav}"></nav>
+<main class="min-vh-100 container pt-4">
+    <div class="card">
+        <div class="card-header">
+            <p>
+                <a class="link-primary" th:href="@{/}"><i class="fa-solid fa-chevron-left"></i> Go Back</a>
+            </p>
+            <p class="h2">
+                [[|Edit Client (${client.name} ${client.lastName})|]]
+            </p>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/client/} + ${client.id + '/edit'}" method="post" th:object="${client}">
+                <input class="form-control" type="hidden" name="id" th:value="*{id}"/>
+                <div class="mb-2">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-control" type="text" name="name" id="name" th:value="*{name}" required/>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label" for="lastName">Last Name</label>
+                    <input class="form-control" type="text" name="lastName" id="lastName" th:value="*{lastName}"
+                           required/>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-control" type="email" name="email" id="email" th:value="*{email}" required/>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label" for="phone">Phone</label>
+                    <input class="form-control" type="text" name="phone" id="phone" th:value="*{phone}" required/>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label" for="credit">Credit</label>
+                    <input class="form-control" type="number" name="credit" id="credit" step="any"
+                           th:value="*{credit}" required/>
+                </div>
+                <div>
+                    <input type="submit" class="btn btn-success" th:value="Save"/>
+                    <a class="btn btn-danger" th:href="@{/client/remove(clientId=${client.id})}" th:text="Remove"></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{${#execInfo.templateName}/../layout/layout::footer}"></footer>
+</body>
+</html>
